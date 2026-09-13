@@ -1,0 +1,3 @@
+include \/mol/offline/install
+deploy \/ink/currency/logo/logo.svg
+deploy \/ink/currency/logo/logo_512.png

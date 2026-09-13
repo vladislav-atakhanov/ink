@@ -1,0 +1,22 @@
+{
+	"short_name": "ink.currency",
+	"name": "ink.currency",
+	"icons": [
+		{
+			"src": "ink/currency/logo/logo_512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "any"
+		},
+		{
+			"src": "ink/currency/logo/logo_512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#161616",
+	"theme_color": "#267370",
+	"display": "standalone"
+}

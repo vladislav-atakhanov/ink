@@ -1,0 +1,110 @@
+$ink_currency_app $mol_book2
+	plugins / <= Theme $mol_theme_auto
+	Calculator $ink_calculator
+		add => add
+		subtract => subtract
+		equal => equal
+		percent => percent
+		input? => input?
+		divide => divide
+		digit* => digit*
+		delete => delete
+		decimal => decimal
+		clear => clear
+		multiply => multiply
+	Placeholder null
+	pages /
+		<= Menu $mol_page
+			title @ \Presets
+			body / <= Presets $mol_list rows <= presets_rows / <= Preset*0 $mol_view sub /
+				<= Preset_name* $mol_link
+					arg <= preset_arg* *
+					sub / 
+						<= preset_input* \
+						<= Preset_to* $mol_icon_arrow_right
+						<= preset_output* \
+				<= Preset_remove* $mol_button_minor
+					click <= preset_remove* null
+					sub / <= Preset_remove_icon* $mol_icon_trash_can_outline
+			tools / <= Preset_save $mol_button_minor
+				sub / <= Preset_icon $mol_icon_plus
+				click <= preset_save null
+			foot /
+				<= Lang $mol_locale_select
+					Trigger_icon null
+					align \top_left
+					dictionary <= lang_dictionary *
+						ru \Russian
+						en \English
+				<= Lights $mol_lights_toggle
+		<= Default $mol_page
+			title <= title @ \ink.currency
+			tools / <= Refresh $mol_button_minor
+				click? <=> refresh? null
+				title <= refresh_title \
+				enabled <= online false
+				sub /
+					^
+					<= Refresh_icon $mol_icon_refresh
+			body /
+				<= Input $ink_currency_string
+					value <= input
+					currency? <=> currency*input? \
+					arg * type \input
+				<= Output $ink_currency_string
+					value <= output \0
+					currency? <=> currency*output? \
+					arg * type \output
+				<= Keyboard $mol_view sub /
+					<= Clear $mol_button_minor
+						click <= clear
+						title \C
+					<= Delete $mol_button_minor
+						click <= delete
+						sub / <= Delete_icon $mol_icon_backspace_outline
+					<= Revert $mol_button_minor
+						click <= revert null
+						sub / <= Revert_icon $mol_icon_swap_vertical
+					<= Divide $mol_button_minor
+						click <= divide
+						title \÷
+					<= Digit*7 $mol_button_minor
+						click <= digit*
+						title <= digit_title* \7
+					<= Digit*8
+					<= Digit*9
+					<= Multiply $mol_button_minor
+						click <= multiply
+						title \×
+					<= Digit*4
+					<= Digit*5
+					<= Digit*6
+					<= Subtract $mol_button_minor
+						click <= subtract
+						title \−
+					<= Digit*1
+					<= Digit*2
+					<= Digit*3
+					<= Add $mol_button_minor
+						click <= add
+						title \+
+					<= Digit*0
+					<= Decimal $mol_button_minor
+						click <= decimal
+						title \,
+					<= Percnet $mol_button_minor
+						click <= percent
+						title \%
+					<= Equal $mol_button_minor
+						click <= equal
+						title \=
+		<= List $ink_currency_select
+			auto <= list_auto null
+			type <= type null
+
+$ink_currency_string $mol_link
+	sub /
+		<= Flag $mol_view sub / <= currency_text <= currency \
+		<= Text $mol_view sub /
+			<= Value $mol_view sub / <= text <= value \0
+			<= Symbol $mol_view sub / <= symbol <= currency \

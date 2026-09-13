@@ -1,0 +1,27 @@
+[mol_theme] {
+	--mol_theme_hue: 314deg;
+	--mol_theme_hue_spread: 136deg;
+}
+[mol_theme='$mol_theme_light'] {
+	--mol_theme_card: oklch(1 0 0);
+	--mol_theme_back: oklch(0.97 0 0);
+	--mol_theme_field: oklch(0.99 0 0);
+	--mol_theme_hover: oklch(0.94 0 0);
+}
+[mol_theme='$mol_theme_dark'] {
+	--mol_theme_back: oklch(0.18 0 0);
+	--mol_theme_card: oklch(0.22 0 0);
+	--mol_theme_field: oklch(0.2 0 0);
+	--mol_theme_hover: oklch(0.28 0 0);
+}
+
+[mol_page_head] {
+	box-shadow: none;
+	border-radius: 0;
+	border-bottom: 1px solid var(--mol_theme_line);
+}
+[mol_page_foot] {
+	box-shadow: none;
+	border-radius: 0;
+	border-top: 1px solid var(--mol_theme_line);
+}
