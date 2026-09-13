@@ -30,12 +30,28 @@ $ink_currency_app $mol_book2
 				sub / <= Preset_icon $mol_icon_plus
 				click <= preset_save null
 			foot /
+				<= Info $mol_pick
+					trigger_content / <= Info_icon $mol_icon_information_outline
+					bubble_content / <= Info_content $mol_list rows /
+						<= Info_github $mol_link
+							uri \https://github.com/fawazahmed0/exchange-api
+							title \fawazahmed0/exchange-api
+							sub /
+								<= Github_icon $mol_icon_github
+								^
+						<= Info_row $mol_view sub /
+							<= Support $mol_link_support
+								uri \https://telegram.me/eloh1m
+								Icon <= Telegram_icon $mol_icon_telegram
+							<= Source $mol_link_source
+								uri \https://github.com/vladislav-atakhanov/ink/tree/main/currency
 				<= Lang $mol_locale_select
 					Trigger_icon null
-					align \top_left
+					align \top_right
 					dictionary <= lang_dictionary *
 						ru \Russian
 						en \English
+					Filter null
 				<= Lights $mol_lights_toggle
 		<= Default $mol_page
 			title <= title @ \ink.currency
