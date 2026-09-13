@@ -1,0 +1,13 @@
+$ink_currency_select $mol_page
+	type \input
+	input_title @ \Source currency
+	output_title @ \Target currency
+	body / <= Presets $mol_list rows <= filtered / <= Item*0 $mol_link
+		arg <= item_arg* *
+		sub /
+			<= Item_name* $mol_view sub / <= item_name* \
+			<= Item_symbol* $mol_view sub / <= item_symbol* \
+	tools / <= Close_list $mol_link
+		sub / <= Close_icon $mol_icon_close
+		arg * type null
+	foot / <= Filter $mol_search query? <=> filter? \
