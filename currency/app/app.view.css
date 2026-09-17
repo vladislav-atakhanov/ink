@@ -25,3 +25,6 @@
 	border-radius: 0;
 	border-top: 1px solid var(--mol_theme_line);
 }
+[ink_currency_app] :is([mol_button], [mol_link]) {
+	-webkit-tap-highlight-color: transparent;
+}
