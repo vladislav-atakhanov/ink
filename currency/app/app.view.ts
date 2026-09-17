@@ -14,8 +14,19 @@ namespace $.$$ {
 			if (id === 'input') return this.$.$mol_state_arg.value(id, 'rub')!
 			return this.$.$mol_state_arg.value(id, 'usd')!
 		}
+
 		override digit_title(id: string) {
 			return id
+		}
+
+		get $() {
+			return super.$.$mol_ambient({
+				$mol_lights_toggle: class extends super.$.$mol_lights_toggle {
+					override click() {
+						$mol_transition(() => super.click())
+					}
+				},
+			})
 		}
 
 		@$mol_action
