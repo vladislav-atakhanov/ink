@@ -12,7 +12,7 @@ namespace $ {
 		}
 		digit(d: string) {
 			const { state } = this
-			this.input(state.clearOnNext ? d : this.input() + d)
+			this.input(state.clearOnNext ? d : this.input() + d.toString())
 			state.clearOnNext = false
 		}
 		decimal() {
@@ -29,6 +29,7 @@ namespace $ {
 		private operator(op: '+' | '-' | '*' | '/') {
 			const { state } = this
 			if (!state.clearOnNext) {
+				this.equal()
 				state.accumulator = parseFloat(this.input()) || 0
 			}
 			state.operator = op
@@ -98,6 +99,7 @@ namespace $ {
 		percent() {
 			const val = parseFloat(this.input()) || 0
 			this.input(String(val / 100))
+			this.equal()
 		}
 	}
 }
