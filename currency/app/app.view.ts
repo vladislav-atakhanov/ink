@@ -37,7 +37,40 @@ namespace $.$$ {
 		override auto() {
 			this.$.$mol_dom.addEventListener('offline', () => this.online(false), { signal: this.signal.signal })
 			this.$.$mol_dom.addEventListener('online', () => this.online(true), { signal: this.signal.signal })
+			this.$.$mol_dom.addEventListener(
+				'keydown',
+				event => {
+					if (this.type()) return
+					const key = [
+						...new Set([
+							...(event.ctrlKey || event.metaKey ? ['ctrl'] : []),
+							...(event.altKey ? ['alt'] : []),
+							...(event.shiftKey ? ['shift'] : []),
+							$mol_keyboard_code[event.keyCode] ?? '?',
+						]),
+					].join('_')
+					this._hotkeys()[key]?.()
+				},
+				{ signal: this.signal.signal },
+			)
 			this.$.$ink_currency.auto()
+		}
+		@$mol_mem
+		_hotkeys() {
+			return Object.fromEntries(
+				Object.entries(this.hotkeys()).flatMap(([action, keys]) =>
+					keys
+						.split(' ')
+						.flatMap(k =>
+							k.includes('$')
+								? Array.from({ length: 10 }, (_, i) => [
+										k.replace('$', i.toString()),
+										() => (this as any)[action](i),
+									])
+								: [[k, () => (this as any)[action]()]],
+						),
+				),
+			)
 		}
 		override destructor() {
 			super.destructor()

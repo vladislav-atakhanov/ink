@@ -13,6 +13,17 @@ $ink_currency_app $mol_book2
 		clear => clear
 		multiply => multiply
 	Placeholder null
+	hotkeys *
+		add \shift_equals
+		subtract \dash
+		equal \enter equals
+		percent \shift_key5
+		divide \forwardSlash
+		digit \key$ numpad$
+		delete \backspace delete
+		decimal \comma period
+		clear \C shift_C
+		multiply \shift_key8
 	pages /
 		<= Menu $mol_page
 			title @ \Presets
