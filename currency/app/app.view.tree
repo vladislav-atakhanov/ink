@@ -16,16 +16,19 @@ $ink_currency_app $mol_book2
 	pages /
 		<= Menu $mol_page
 			title @ \Presets
-			body / <= Presets $mol_list rows <= presets_rows / <= Preset*0 $mol_view sub /
-				<= Preset_name* $mol_link
-					arg <= preset_arg* *
-					sub / 
-						<= preset_input* \
-						<= Preset_to* $mol_icon_arrow_right
-						<= preset_output* \
-				<= Preset_remove* $mol_button_minor
-					click <= preset_remove* null
-					sub / <= Preset_remove_icon* $mol_icon_trash_can_outline
+			body / <= Presets $mol_list rows /
+				<= Current_value $mol_view sub / <= current_value \
+				^ presets_rows / <= Preset*0 $mol_view sub /
+					<= Preset_name* $mol_link
+						arg <= preset_arg* *
+						sub /
+							<= preset_input* \
+							<= Preset_to* $mol_icon_arrow_right
+							<= preset_output* \
+							<= Preset_value* $mol_view sub / <= preset_value* \
+					<= Preset_remove* $mol_button_minor
+						click <= preset_remove* null
+						sub / <= Preset_remove_icon* $mol_icon_trash_can_outline
 			tools / <= Preset_save $mol_button_minor
 				sub / <= Preset_icon $mol_icon_plus
 				click <= preset_save null

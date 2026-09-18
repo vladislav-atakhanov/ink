@@ -68,7 +68,10 @@ namespace $.$$ {
 			return this.$.$ink_currency_select.prototype.auto.call(this.List())
 		}
 		presets(next?: string[]) {
-			return this.$.$mol_state_local.value('presets', next ? [...new Set(next)] : undefined) ?? ([] as string[])
+			return (
+				this.$.$mol_state_local.value('presets', next ? [...new Set(next)].sort() : undefined) ??
+				([] as string[])
+			)
 		}
 		@$mol_mem_key
 		override preset_input(id: string) {
@@ -120,6 +123,21 @@ namespace $.$$ {
 		@$mol_action
 		override preset_remove(id: string) {
 			this.presets(this.presets().filter(i => i !== id))
+		}
+		@$mol_mem_key
+		preset_value(id: string) {
+			const input = parseFloat(this.input())
+			if (!input) return '0'
+			const [i, o] = id.split(' ')
+			return this.$.$ink_currency.value_formatter()(this.$.$ink_currency.value([i, o, input]))
+		}
+		Current_value() {
+			return this.presets().length > 0 ? super.Current_value() : (null as any)
+		}
+		current_value() {
+			const input = parseFloat(this.input())
+			if (!input) return '0'
+			return this.$.$ink_currency.value_formatter()(input)
 		}
 	}
 	export class $ink_currency_string extends $.$ink_currency_string {

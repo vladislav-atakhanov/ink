@@ -64,7 +64,22 @@ namespace $ {
 			Trigger: { justifyContent: 'space-between' },
 		},
 		Preset_name: {
-			flex: { grow: 1 },
+			width: '100%',
+			display: 'grid',
+			gridTemplateColumns: 'max-content max-content max-content auto',
+		},
+		Preset: {
+			display: 'grid',
+			gridTemplateColumns: 'auto max-content',
+		},
+		Preset_value: {
+			textAlign: 'right',
+			display: 'block',
+			color: $mol_theme.shade,
+			marginInlineStart: '1rem',
+			whiteSpace: 'nowrap',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
 		},
 		Digit: {
 			background: { color: $mol_theme.card },
